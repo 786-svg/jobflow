@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html, body {
+  background: #F5F0E6;
+  color: #1C1814;
+  font-family: 'Inter Tight', system-ui, sans-serif;
+  font-feature-settings: 'ss01', 'ss02', 'cv11';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Subtle paper grain */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(28, 24, 20, 0.018) 1px, transparent 1px),
+    radial-gradient(circle at 70% 70%, rgba(28, 24, 20, 0.018) 1px, transparent 1px);
+  background-size: 8px 8px, 12px 12px;
+  background-position: 0 0, 4px 4px;
+  mix-blend-mode: multiply;
+}
+
+/* Selection */
+::selection { background: #1C1814; color: #F5F0E6; }
+
+/* Custom underline that animates */
+.linky {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size 200ms ease;
+}
+.linky:hover {
+  background-size: 0 1px;
+  background-position: 100% 100%;
+}
+
+/* Display italic — extra style */
+.italic-display {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+}
+
+/* Numbered section heading */
+.numbered {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #3C342C;
+}
+
+/* Hover lift on cards */
+.card { transition: border-color 200ms ease, transform 200ms ease; }
+.card:hover { border-color: #1C181466; }
+
+/* Pulsing dot for live indicator */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+.dot-live {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #3A6B3A;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* Slow fade-in for content */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up {
+  animation: fade-up 400ms ease-out backwards;
+}
+
+/* Form inputs */
+input[type="text"], input[type="search"], select, textarea {
+  font-family: inherit;
+  border: 0.5px solid #1C18144D;
+  background: transparent;
+  border-radius: 0;
+  padding: 8px 10px;
+  font-size: 14px;
+  color: #1C1814;
+  outline: none;
+  transition: border-color 150ms ease;
+}
+input[type="text"]:focus, input[type="search"]:focus, select:focus, textarea:focus {
+  border-color: #1C1814;
+}
+
+/* Buttons */
+.btn {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  border: 0.5px solid #1C181466;
+  background: transparent;
+  color: #1C1814;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+.btn:hover { background: #1C1814; color: #F5F0E6; border-color: #1C1814; }
+.btn-primary { background: #1C1814; color: #F5F0E6; border-color: #1C1814; }
+.btn-primary:hover { background: #C44A2C; border-color: #C44A2C; }
+.btn-coral { color: #C44A2C; border-color: #C44A2C; }
+.btn-coral:hover { background: #C44A2C; color: #F5F0E6; }
+.btn-sm { padding: 4px 10px; font-size: 10px; }
+
+/* Vertical rule */
+.vrule { width: 0.5px; background: #1C18141A; }
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #1C181433; border-radius: 0; }
+::-webkit-scrollbar-thumb:hover { background: #1C181466; }
